@@ -1,0 +1,14 @@
+* hgrep
+  run grep command but keep the head line.
+** Usage
+
+#+begin_src sh
+  sh> ps aux | hgrep.fish -C 1 "fish"
+      # or
+  sh> ps aux | hgrep.pl -C 1 "fish"
+      # or
+  sh> ps aux | hgrep.py -C 1 "fish"
+
+#+end_src
+** Blog
+  [[https://jeongoon.github.io/posts/2022-04-23-grep-with-header.html][find this blog]] for more information.
