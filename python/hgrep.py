@@ -69,8 +69,12 @@ else:
                , file = sys.stderr )
         exit( 2 )
 
+# read head first and print into stdout directly
 print( file_to_read.readline() , file = sys.stdout, flush = True, end = '')
 
+# fork() will create a child process
+# and we can ditinguish which one is parent process by checking
+# return value
 grep_pid = os.fork()
 
 if grep_pid:
@@ -80,8 +84,6 @@ if grep_pid:
     # writing file descriptor will be used
     os.close(r)
     os.dup2( w, sys.stdout.fileno() )
-
-    # read head first and print into stdout directly
 
     for line in file_to_read:
         print( line )
@@ -97,6 +99,9 @@ if grep_pid:
 else:
     # child process
     os.dup2( r, sys.stdin.fileno() )
+
+    # child process only requires 'r' as stdin
+    # and stdout so it is better to close r,w here.
     os.closerange( r, w )
     os.execvp( 'grep', grep_options )
 
