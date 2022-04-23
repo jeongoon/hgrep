@@ -22,7 +22,6 @@ for ( $ENV{'TERM'} ) {
 opt context =>
   ( isa => 'Num',
     alias => 'C',
-    default => 5,
     comment => 'print NUM lines of output context' );
 
 opt nohead =>
@@ -49,7 +48,7 @@ arg file_name =>
 
 my $opts = optargs;
 
-if ( $opts->{'context'} >  0 ) {
+if ( defined $opts->{'context'} and $opts->{'context'} > 0 ) {
     push @grep_options, '-C', $opts->{'context'};
 }
 
@@ -72,6 +71,7 @@ if ( not $opts->{nohead} ) {
 
 my $to_gh; # to grep handle
 my $grep_pid = open( $to_gh, '|-' );
+
 if ( not defined $grep_pid ) {
     die "Can't fork: $!";
 }
