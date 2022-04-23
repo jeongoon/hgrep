@@ -69,7 +69,7 @@ else:
                , file = sys.stderr )
         exit( 2 )
 
-print( file_to_read.readline() , file = sys.stdout, flush = True )
+print( file_to_read.readline() , file = sys.stdout, flush = True, end = '')
 
 grep_pid = os.fork()
 
