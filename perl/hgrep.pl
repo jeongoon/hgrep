@@ -4,6 +4,7 @@
 # vim: set tabstop=8 expandtab:
 
 use strict; use warnings;
+use feature qw(switch);
 use OptArgs; # https://metacpan.org/dist/OptArgs/view/bin/optargs
 
 my @grep_options = qw(-i);
