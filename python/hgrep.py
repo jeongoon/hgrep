@@ -57,10 +57,10 @@ grep_options.append( args.search )
 r, w = os.pipe()
 
 if args.file_path == "-":
-    # open file path to read
+    # from stdin
     file_to_read = sys.stdin
 else:
-    # or from stdin
+    # or open file path to read
     if os.path.isfile( args.file_path ):
         file_to_read = open( args.file_path, "r" )
     else:
