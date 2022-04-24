@@ -40,7 +40,7 @@ set --append grep_options $search_string
 begin
     # print head first
     read -l line
-    echo $line
+    echo "$line"
 
     # let 'grep' do the rest
     exec grep $grep_options
