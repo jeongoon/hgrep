@@ -30,7 +30,7 @@ grep_options = [ '-i' ]
 if os.environ['TERM'].lower != 'dumb':
     grep_options.append( "--color=auto" )
 
-# argparse cannot handle optional argument
+# argparse cannot handle optional positional argument
 # WORKAROUND:
 argv = sys.argv[1::]
 if len(argv) == 0:
@@ -73,7 +73,7 @@ else:
 print( file_to_read.readline() , file = sys.stdout, flush = True, end = '')
 
 # fork() will create a child process
-# and we can ditinguish which one is parent process by checking
+# and we can distinguish which one is parent process by checking
 # return value
 grep_pid = os.fork()
 
